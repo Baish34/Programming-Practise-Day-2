@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Prime Fizz Buzz Program Output</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <h1>Prime Fizz Buzz Program Output</h1>
+  <strong>
+    <ol id="resultList"></ol>
+  </strong>
+
+  <script>
+    function isPrime(num) {
+      if (num <= 1) return false;
+      if (num <= 3) return true;
+      if (num % 2 === 0 || num % 3 === 0) return false;
+
+      for (let i = 5; i * i <= num; i += 6) {
+        if (num % i === 0 || num % (i + 2) === 0) return false;
+      }
+
+      return true;
+    }
+
+    function generateArrayAndDisplay() {
+      const resultList = document.getElementById('resultList');
+
+      for (let i = 1; i <= 30; i++) {
+        let listItem = document.createElement('li');
+        let value = '';
+
+        if (isPrime(i)) {
+          if (i % 3 === 0 && i % 5 === 0) {
+            value = 'FizzPrime';
+          } else if (i % 3 === 0) {
+            value = 'FizzPrime';
+          } else if (i % 5 === 0) {
+            value = 'BuzzPrime';
+          } else {
+            value = 'Prime';
+          }
+        } else {
+          if (i % 3 === 0) {
+            value = 'Fizz';
+          } else if (i % 5 === 0) {
+            value = 'Buzz';
+          } else {
+            value = i;
+          }
+        }
+
+        listItem.textContent = value;
+        resultList.appendChild(listItem);
+      }
+    }
+    generateArrayAndDisplay();
+  </script>
+</body>
+
+</html>
